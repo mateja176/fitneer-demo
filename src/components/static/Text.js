@@ -10,6 +10,7 @@ class Text extends Root {
     padding = "0",
     background = "transparent",
     fontSize = "100%",
+    textDecoration = "none",
     color = "black",
     width = "auto",
     height = "auto",
@@ -35,10 +36,12 @@ class Text extends Root {
       gridArea: gridArea,
       childStyles: `
         font-size: ${fontSize};
+        text-decoration: ${textDecoration};
       `
     } );
 
     this.fontSize = fontSize;
+    this.textDecoration = textDecoration;
 
   }
 

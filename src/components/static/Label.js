@@ -1,10 +1,10 @@
-class Anchor {
+class Label {
   constructor({
     className = "",
     id = "anchor",
-    tag = "a",
-    src = "#",
-    innerHtml = "My Link",
+    tag = "label",
+    element = "",
+    innerHtml = "My Label",
     margin = "0",
     padding = "0",
     background = "transparent",
@@ -16,18 +16,16 @@ class Anchor {
     justifySelf = "auto",
     alignSelf = "auto",
     gridArea = "auto",
-    textAlign = "center",
     textDecoration = "none"
   } = {}) {
     this.className = className;
     this.id = id;
     this.tag = tag;
-    this.src = src;
+    this.element = element;
     this.innerHtml = innerHtml;
     this.margin = margin;
     this.padding = padding;
     this.background = background;
-    this.fontSize = fontSize;
     this.color = color;
     this.width = width;
     this.height = height;
@@ -35,10 +33,12 @@ class Anchor {
     this.justifySelf = justifySelf;
     this.alignSelf = alignSelf;
     this.gridArea = gridArea;
-    this.textAlign = textAlign;
+    this.fontSize = fontSize;
     this.textDecoration = textDecoration;
 
-    this.html = `<${this.tag} src="${this.src}" class="${this.className}" id="${this.id}">${this.innerHtml}</${this.tag}>`;
+    this.html = `<${this.tag} for="${ this.element }" class="${ this.className }" id="${ this.id }">${
+        this.innerHtml
+      }</${ this.tag }>`;
 
     this.css = `<style>
     #${this.id} {
@@ -54,6 +54,7 @@ class Anchor {
       grid-area: ${this.gridArea};
       text-align: ${this.textAlign};
       font-size: ${this.fontSize};
+      font-size: ${this.fontSize};
       text-decoration: ${this.textDecoration};
     }
     </style>
@@ -64,4 +65,4 @@ class Anchor {
   }
 }
 
-export default Anchor;
+export default Label;

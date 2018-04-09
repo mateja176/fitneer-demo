@@ -17,6 +17,7 @@ class Layout extends Root {
     alignSelf = "auto",
     gridArea = "auto",
     textAlign = "center",
+    overflow = "visible",
     borderRadius = "0",
     justifyItems = "center",
     alignItems = "center",
@@ -41,6 +42,7 @@ class Layout extends Root {
       gridArea: gridArea,
       textAlign: textAlign,
       childStyles: `
+        overflow: ${overflow};
         border-radius: ${borderRadius};
         justify-items: ${justifyItems};
         align-items: ${alignItems};

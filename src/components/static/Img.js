@@ -4,7 +4,7 @@ class Img {
     className = "",
     id = "image",
     tag = "img",
-    border = "none",
+    borderRight = "none",
     borderRadius = "0",
     background = "white",
     width = "auto",
@@ -18,7 +18,7 @@ class Img {
     this.className = className;
     this.id = id;
     this.tag = tag;
-    this.border = border;
+    this.borderRight = borderRight;
     this.borderRadius = borderRadius;
     this.background = background;
     this.width = width;
@@ -32,7 +32,7 @@ class Img {
 
     this.css = `<style>
     #${this.id} {
-      border: ${this.border};
+      border-right: ${this.borderRight};
       border-radius: ${this.borderRadius};
       background: ${this.background};
       width: ${this.width};

@@ -40,8 +40,8 @@ const fitneer = new Layout({
 
 const facebookLogo = new Img({
   id: "facebookLogo",
-  src: "img/facebook-logo.png",
-  borderRadius: "5%",
+  src: "img/facebook.svg",
+  borderRight: "0.1em solid lightgrey",
   background: "#3E5B98",
   width: "3em",
   height: "3em",
@@ -60,6 +60,7 @@ const facebookSignup = new Text({
 const facebookNoShare = new Text({
   id: "facebookNoShare",
   color: "lightgrey",
+  fontSize: "80%",
   margin: "0 0.5em 0.5em 0.5em",
   innerHtml: "Nothing is shared without your permission",
   gridArea: "facebookNoShare"
@@ -69,9 +70,9 @@ const facebookNoShare = new Text({
 const facebook = new Layout({
   id: "facebook",
   tag: "main",
+  // borderRadius: "5%",
   margin: "0 0 1em 0",
   background: "#3E5B98",
-  borderRadius: "3%",
   gridTemplateColumns: "auto 1fr",
   gridTemplateRows: "auto auto",
   gridTemplateAreas: `
@@ -84,11 +85,32 @@ const facebook = new Layout({
   `
 });
 
-const policy = new Text({
-  id: "policy",
+const termsOfUse = new Anchor({
+  id: "termsOfUse",
+  display: "inline-block",
+  color: "grey",
+  textDecoration: "underline",
+  innerHtml: "Terms of use"
+});
+
+// Doesn't work
+// const privacyPolicy = Object.assign( {}, termsOfUse,
+//   { id: "privacyPolicy", innerHtml: "Privacy Policy" });
+
+const privacyPolicy = new Anchor({
+  id: "privacyPolicy",
+  display: "inline-block",
+  color: "grey",
+  textDecoration: "underline",
+  innerHtml: "Privacy Policy"
+});
+
+const terms = new Text({
+  id: "terms",
   color: "grey",
   innerHtml: `
-    By creating an account I agree to the Fitneer<br><a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>
+    By creating an account I agree to the Fitneer<br>
+    ${termsOfUse.content} and ${privacyPolicy.content}
   `
 });
 
@@ -98,13 +120,14 @@ const signup = new Layout({
   textAlign: "center",
   innerHtml: `
     ${facebook.content}
-    ${policy.content}
+    ${terms.content}
   `
 });
 
 
-const signinLink = new Anchor( {
+const signinLink = new Text( {
   id: "signinLink",
+  tag: "a",
   display: "inline-block",
   color: "#3F81FC",
   innerHtml: "Sign in"

@@ -1,5 +1,5 @@
 import register from "./components/complex/register.js";
-// import main from "./components/complex/main.js";
+import main from "./components/complex/main.js";
 
 const app = document.querySelector( "#app" );
 app.innerHTML = register.content;
@@ -12,8 +12,8 @@ const Store = {
   },
   dispatch: (action) => {
     switch (action) {
-      case "signupFacebook":
-        // app.innerHTML = main.content;
+      case "facebook":
+        app.innerHTML = main.content;
         break;
 
       default:
@@ -21,3 +21,10 @@ const Store = {
     }
   }
 };
+
+Store.activate( "facebook" );
+
+/**
+ * TODO
+ * Lazy Load main.js
+ */
