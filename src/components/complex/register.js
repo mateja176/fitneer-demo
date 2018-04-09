@@ -10,8 +10,8 @@ const fitneerLogo = new Img({
   height: "7em"
 });
 
-const fitneerText = new Text({
-  id: "fitneerText",
+const fitneerHeading = new Text({
+  id: "fitneerHeading",
   tag: "h1",
   margin: "1em 0 0.5em 0",
   fontSize: "200%",
@@ -25,14 +25,14 @@ const fitneerSlogan = new Text({
   innerHtml: "Find your fintess peer"
 });
 
-const logoLayout = new Layout({
-  id: "logoLayout",
+const fitneer = new Layout({
+  id: "fitneer",
   tag: "header",
   margin: "5em 0 0 0",
   gridTemplateRows: "1fr auto auto",
   innerHtml: `
     ${fitneerLogo.content}
-    ${fitneerText.content}
+    ${fitneerHeading.content}
     ${fitneerSlogan.content}
   `
 });
@@ -48,26 +48,26 @@ const facebookLogo = new Img({
   gridArea: "facebookLogo"
 });
 
-const signupFacebook = new Text({
-  id: "signupFacebook",
+const facebookSignup = new Text({
+  id: "facebookSignup",
   margin: "0.5em 0 0 0",
   fontSize: "120%",
   color: "white",
   innerHtml: "Sign up with Facebook",
-  gridArea: "signupFacebook"
+  gridArea: "facebookSignup"
 });
 
-const noShare = new Text({
-  id: "noShare",
+const facebookNoShare = new Text({
+  id: "facebookNoShare",
   color: "lightgrey",
   margin: "0 0.5em 0.5em 0.5em",
   innerHtml: "Nothing is shared without your permission",
-  gridArea: "noShare"
+  gridArea: "facebookNoShare"
 });
 
 
-const signupFacebookLayout = new Layout({
-  id: "signupFacebookLayout",
+const facebook = new Layout({
+  id: "facebook",
   tag: "main",
   margin: "0 0 1em 0",
   background: "#3E5B98",
@@ -75,12 +75,12 @@ const signupFacebookLayout = new Layout({
   gridTemplateColumns: "auto 1fr",
   gridTemplateRows: "auto auto",
   gridTemplateAreas: `
-  "facebookLogo signupFacebook"
-  "facebookLogo noShare"`,
+  "facebookLogo facebookSignup"
+  "facebookLogo facebookNoShare"`,
   innerHtml: `
     ${facebookLogo.content}
-    ${signupFacebook.content}
-    ${noShare.content}
+    ${facebookSignup.content}
+    ${facebookNoShare.content}
   `
 });
 
@@ -93,41 +93,42 @@ const policy = new Text({
 });
 
 
-const signupLayout = new Layout({
-  id: "signupLayout",
+const signup = new Layout({
+  id: "signup",
   textAlign: "center",
   innerHtml: `
-    ${signupFacebookLayout.content}
+    ${facebook.content}
     ${policy.content}
   `
 });
 
 
-const signInLink = new Anchor( {
+const signinLink = new Anchor( {
+  id: "signinLink",
   display: "inline-block",
   color: "#3F81FC",
   innerHtml: "Sign in"
 });
 
-const signIn = new Text({
-  id: "signIn",
+const signin = new Text({
+  id: "signin",
   margin: "0 0 2em 0",
-  innerHtml: `Already have an account? ${signInLink.content}`
+  innerHtml: `Already have an account? ${signinLink.content}`
 });
 
 
-const registerLayout = new Layout({
-  id: "registerLayout",
+const register = new Layout({
+  id: "register",
   tag: "section",
   width: "100vw",
   height: "100vh",
   background: "white",
   gridTemplateRows: "auto 1fr auto",
   innerHtml: `
-    ${logoLayout.content}
-    ${signupLayout.content}
-    ${signIn.content}
+    ${fitneer.content}
+    ${signup.content}
+    ${signin.content}
   `
 } );
 
-export default registerLayout;
+export default register;
