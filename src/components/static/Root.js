@@ -8,6 +8,8 @@ class Root {
     padding = 0,
     background = "white",
     color = "black",
+    border = "none",
+    borderRadius = "0",
     width = "auto",
     height = "auto",
     display = "block",
@@ -25,6 +27,8 @@ class Root {
     this.padding = padding;
     this.background = background;
     this.color = color;
+    this.border = border;
+    this.borderRadius = borderRadius;
     this.width = width;
     this.height = height;
     this.display = display;
@@ -42,6 +46,8 @@ class Root {
       padding: ${this.padding};
       background: ${this.background};
       color: ${this.color};
+      border: ${this.border};
+      border-radius: ${this.borderRadius};
       width: ${this.width};
       height: ${this.height};
       display: ${this.display};

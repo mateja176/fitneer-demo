@@ -18,12 +18,14 @@ class Layout extends Root {
     gridArea = "auto",
     textAlign = "center",
     overflow = "visible",
+    border = "none",
     borderRadius = "0",
     justifyItems = "center",
     alignItems = "center",
     gridTemplateColumns = "none",
     gridTemplateRows = "none",
-    gridTemplateAreas = "none"
+    gridTemplateAreas = "none",
+    gridGap = "0"
   } = {}) {
     super({
       className: className,
@@ -34,6 +36,8 @@ class Layout extends Root {
       padding: padding,
       background: background,
       color: color,
+      border: border,
+      borderRadius: borderRadius,
       width: width,
       height: height,
       display: display,
@@ -43,20 +47,20 @@ class Layout extends Root {
       textAlign: textAlign,
       childStyles: `
         overflow: ${overflow};
-        border-radius: ${borderRadius};
         justify-items: ${justifyItems};
         align-items: ${alignItems};
         grid-template-columns: ${gridTemplateColumns};
         grid-template-rows: ${gridTemplateRows};
-        grid-template-areas: ${gridTemplateAreas}
+        grid-template-areas: ${gridTemplateAreas};
+        grid-gap: ${gridGap};
     `
     } );
-    this.borderRadius = borderRadius;
     this.justifyItems = justifyItems;
     this.alignItems = alignItems;
     this.gridTemplateColumns = gridTemplateColumns;
     this.gridTemplateRows = gridTemplateRows;
     this.gridTemplateAreas = gridTemplateAreas;
+    this.gridGap = gridGap;
   }
 }
 

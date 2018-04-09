@@ -1,5 +1,6 @@
 import register from "./components/complex/register.js";
 import main from "./components/complex/main.js";
+import profiling from "./components/complex/profiling.js";
 
 const app = document.querySelector( "#app" );
 app.innerHTML = register.content;
@@ -7,11 +8,21 @@ app.innerHTML = register.content;
 // const app = document.querySelector( "#app" );
 // app.innerHTML = main.content;
 
+// const app = document.querySelector( "#app" );
+// app.innerHTML = profiling.content;
+
 const Store = {
   activate: ( id, event = "click" ) => {
     document.querySelector(`#${id}`).addEventListener(event, () => {
       Store.dispatch( id );
     });
+  },
+  activateClass: ( className, event = "click" ) => {
+    document.querySelectorAll( `.${ className }` ).forEach( element => {
+      element.addEventListener(event, () => {
+        Store.dispatch(className);
+      });
+    } );
   },
   dispatch: (action) => {
     switch (action) {
@@ -25,8 +36,12 @@ const Store = {
         Store.activate("facebook");
         break;
       case "find":
-        console.dir("found");
-        // app.innerHTML = register.content;
+        app.innerHTML = profiling.content;
+        Store.activateClass( "selectGoal" );
+        document.querySelector( "#page1" ).style.backgroundColor = "grey";
+        break;
+      case "selectGoal":
+        console.dir( "goal selected" );
         break;
 
       default:

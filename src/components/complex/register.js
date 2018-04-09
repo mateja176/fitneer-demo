@@ -72,7 +72,6 @@ const facebookNoShare = new Text({
 const facebook = new Layout({
   id: "facebook",
   tag: "main",
-  // borderRadius: "5%",
   margin: "0 0 1em 0",
   background: "#3E5B98",
   gridTemplateColumns: "auto 1fr",
@@ -94,10 +93,6 @@ const termsOfUse = new Anchor({
   textDecoration: "underline",
   innerHtml: "Terms of use"
 });
-
-// Doesn't work
-// const privacyPolicy = Object.assign( {}, termsOfUse,
-//   { id: "privacyPolicy", innerHtml: "Privacy Policy" });
 
 const privacyPolicy = new Anchor({
   id: "privacyPolicy",
@@ -125,22 +120,6 @@ const signup = new Layout({
     ${terms.content}
   `
 });
-
-
-// const signinLink = new Text( {
-//   id: "signinLink",
-//   tag: "a",
-//   display: "inline-block",
-//   color: "#3F81FC",
-//   innerHtml: "Sign in"
-// });
-
-// const signin = new Text({
-//   id: "signin",
-//   margin: "0 0 2em 0",
-//   innerHtml: `Already have an account? ${signinLink.content}`
-// });
-
 
 const register = new Layout({
   id: "register",
