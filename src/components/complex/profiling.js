@@ -14,6 +14,7 @@ const subjectHeading = new Text({
 
 const subjectExplained = new Text({
   id: "subjectExplained",
+  margin: " 0 0 1em 0",
   background: "transparent",
   color: "white",
   innerHtml: "Don't worry you can change it later"
@@ -29,35 +30,26 @@ const subject = new Layout({
     ${subjectHeading.content}
     ${subjectExplained.content}
   `
-});
+} );
 
-const optionGetLean = new Text({
-  id: "optionGetLean",
-  className: "selectGoal",
-  fontSize: "120%",
-  background: "#21A1F0",
-  color: "white",
-  innerHtml: "Get Lean",
-});
+const selectGoalObject = {};
+const selectGoalArray = [ "Get Lean", "Get Fit", "Build Muscle" ];
+let selectGoalOptions = "";
 
-const optionGetFit = new Text({
-  id: "optionGetFit",
-  className: "selectGoal",
-  fontSize: "120%",
-  background: "#21A1F0",
-  color: "white",
-  innerHtml: "Get Fit"
-});
+for ( let index = 0; index < selectGoalArray.length; index++ ) {
+  const option = `option${index}`;
+  selectGoalObject[option] = new Text({
+    id: `${option}`,
+    className: "selectGoal options",
+    innerHtml: `${selectGoalArray[index]}`
+  });
+}
 
-const optionBuildMuscle = new Text({
-  id: "optionBuildMuscle",
-  className: "selectGoal",
-  fontSize: "120%",
-  background: "#21A1F0",
-  color: "white",
-  innerHtml: "Build Muscle"
-});
-
+for (const option in selectGoalObject) {
+  if (selectGoalObject.hasOwnProperty(option)) {
+    selectGoalOptions += selectGoalObject[option].content;
+  }
+}
 
 const options = new Layout({
   id: "options",
@@ -66,9 +58,7 @@ const options = new Layout({
   background: "transparent",
   gridGap: "1em",
   innerHtml: `
-    ${optionGetLean.content}
-    ${optionGetFit.content}
-    ${optionBuildMuscle.content}
+    ${selectGoalOptions}
   `
 });
 

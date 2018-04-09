@@ -40,10 +40,41 @@ const Store = {
         Store.activateClass( "selectGoal" );
         document.querySelector( "#page1" ).style.backgroundColor = "grey";
         break;
-      case "selectGoal":
-        console.dir( "goal selected" );
-        break;
+      case "selectGoal": {
+        document.querySelector( "#subjectHeading" ).innerHTML = "Your fintess level";
+        document.querySelector( "#subjectExplained" ).innerHTML = "It's not important where you begin<br>But where you are heading";
 
+        const fitnessLevelArray = [
+          "I'm not so fit",
+          "I am quite fit",
+          "I am very fit"
+        ];
+        const diff = fitnessLevelArray.length - document.querySelectorAll( ".options" ).length;
+        const difference = Math.abs(diff);
+
+        if ( fitnessLevelArray.length > document.querySelectorAll( ".options" ).length ) {
+          for (let index = 0; index < difference; index++) {
+            const additionalParagraph = document.createElement( "p" );
+            additionalParagraph.classList = "options";
+            document.querySelector( "#options" ).appendChild( additionalParagraph );
+          }
+        } else if ( fitnessLevelArray.length < document.querySelectorAll( ".options" ).length ) {
+          for ( let index = 1; index <= difference; index++ ) {
+            const options = document.querySelectorAll( ".options" );
+            const redundantParagraph = document.querySelector( `#option${options.length - index}` );
+            document.querySelector( "#options" ).removeChild(redundantParagraph);
+          }
+
+        }
+        // document.querySelector( "#option0" ).innerHTML = "I'm not so fit";
+        document.querySelectorAll( ".options" ).forEach( ( option, i ) => {
+          option.innerHTML = `${fitnessLevelArray[i]}`;
+        });
+
+        document.querySelector("#page1").style.backgroundColor = "white";
+        document.querySelector("#page2").style.backgroundColor = "grey";
+        break;
+      }
       default:
         break;
     }
@@ -55,9 +86,23 @@ Store.activate( "facebook" );
 /**
  * TODO
  *
+ * Lower angle blue
+ *
+ * Back button profiling
+ *
+ * Fixed hight paragraph
+ *
  * root
  * button layout text
  * heading paragraph anchor label
  *
  * Lazy Load main.js
+ *
+ * Create dynamic componenets
+ *
+ * Create SVG logo
+ *
+ * Optimize SVG's
+ *
+ * Minify and unglify code
  */
