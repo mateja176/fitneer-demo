@@ -4,6 +4,9 @@ import main from "./components/complex/main.js";
 const app = document.querySelector( "#app" );
 app.innerHTML = register.content;
 
+// const app = document.querySelector( "#app" );
+// app.innerHTML = main.content;
+
 const Store = {
   activate: ( id, event = "click" ) => {
     document.querySelector(`#${id}`).addEventListener(event, () => {
@@ -14,6 +17,16 @@ const Store = {
     switch (action) {
       case "facebook":
         app.innerHTML = main.content;
+        Store.activate("logout");
+        Store.activate("find");
+        break;
+      case "logout":
+        app.innerHTML = register.content;
+        Store.activate("facebook");
+        break;
+      case "find":
+      console.dir("found");
+        // app.innerHTML = register.content;
         break;
 
       default:

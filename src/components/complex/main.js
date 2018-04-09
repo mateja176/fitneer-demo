@@ -1,6 +1,14 @@
 import Layout from "../static/Layout.js";
+import Anchor from "../static/Anchor.js";
 import Img from "../static/Img.js";
 import Label from "../static/Label.js";
+
+const logout = new Anchor( {
+  id: "logout",
+  margin: "2em 2em 0 0 ",
+  justifySelf: "right",
+  innerHtml: "Logout"
+} );
 
 const findIcon = new Img({
   id: "findIcon",
@@ -48,11 +56,13 @@ const main = new Layout({
   height: "100vh",
   background: `linear-gradient( 160deg,
     white 0%,
-    white 35%,
-    #21A1F0 35%,
+    white 37%,
+    #21A1F0 37%,
     #21A1F0 100%
   )`,
+  gridTemplateRows: "auto 1fr",
   innerHtml: `
+    ${logout.content}
     ${find.content}
   `
 });
