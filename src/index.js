@@ -25,7 +25,7 @@ const Store = {
         Store.activate("facebook");
         break;
       case "find":
-      console.dir("found");
+        console.dir("found");
         // app.innerHTML = register.content;
         break;
 
@@ -39,5 +39,10 @@ Store.activate( "facebook" );
 
 /**
  * TODO
+ *
+ * root
+ * button layout text
+ * heading paragraph anchor label
+ *
  * Lazy Load main.js
  */

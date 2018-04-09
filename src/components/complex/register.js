@@ -6,8 +6,9 @@ import Anchor from "../static/Anchor.js";
 const fitneerLogo = new Img({
   id: "fitneerLogo",
   src: "img/fitneer-shadow.png",
-  width: "7em",
-  height: "7em"
+  background: "transparent",
+  width: "10em",
+  height: "10em"
 });
 
 const fitneerHeading = new Text({
@@ -28,7 +29,8 @@ const fitneerSlogan = new Text({
 const fitneer = new Layout({
   id: "fitneer",
   tag: "header",
-  margin: "5em 0 0 0",
+  margin: "8em 0 0 0",
+  background: "transparent",
   gridTemplateRows: "1fr auto auto",
   innerHtml: `
     ${fitneerLogo.content}
@@ -53,7 +55,7 @@ const facebookSignup = new Text({
   margin: "0.5em 0 0 0",
   fontSize: "120%",
   color: "white",
-  innerHtml: "Sign up with Facebook",
+  innerHtml: "Login with Facebook",
   gridArea: "facebookSignup"
 });
 
@@ -125,19 +127,19 @@ const signup = new Layout({
 });
 
 
-const signinLink = new Text( {
-  id: "signinLink",
-  tag: "a",
-  display: "inline-block",
-  color: "#3F81FC",
-  innerHtml: "Sign in"
-});
+// const signinLink = new Text( {
+//   id: "signinLink",
+//   tag: "a",
+//   display: "inline-block",
+//   color: "#3F81FC",
+//   innerHtml: "Sign in"
+// });
 
-const signin = new Text({
-  id: "signin",
-  margin: "0 0 2em 0",
-  innerHtml: `Already have an account? ${signinLink.content}`
-});
+// const signin = new Text({
+//   id: "signin",
+//   margin: "0 0 2em 0",
+//   innerHtml: `Already have an account? ${signinLink.content}`
+// });
 
 
 const register = new Layout({
@@ -145,13 +147,17 @@ const register = new Layout({
   tag: "section",
   width: "100vw",
   height: "100vh",
-  background: "white",
-  gridTemplateRows: "auto 1fr auto",
+  background: `linear-gradient( 160deg,
+    #21A1F0 0%,
+    #21A1F0 35%,
+    white 35%,
+    white 100%
+  )`,
+  gridTemplateRows: "auto 1fr",
   innerHtml: `
     ${fitneer.content}
     ${signup.content}
-    ${signin.content}
   `
-} );
+});
 
 export default register;

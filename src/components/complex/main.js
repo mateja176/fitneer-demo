@@ -42,7 +42,7 @@ const find = new Layout({
   id: "find",
   tag: "section",
   background: "transparent",
-  margin: "0 0 10em 0",
+  margin: "0 0 13em 0",
   innerHtml: `
     ${findIconWrap.content}
     ${findTextLabel.content}
@@ -56,8 +56,8 @@ const main = new Layout({
   height: "100vh",
   background: `linear-gradient( 160deg,
     white 0%,
-    white 37%,
-    #21A1F0 37%,
+    white 35%,
+    #21A1F0 35%,
     #21A1F0 100%
   )`,
   gridTemplateRows: "auto 1fr",
