@@ -14,7 +14,6 @@ const subjectHeading = new Text({
 
 const subjectExplained = new Text({
   id: "subjectExplained",
-  margin: " 0 0 1em 0",
   background: "transparent",
   color: "white",
   innerHtml: "Don't worry you can change it later"
@@ -40,7 +39,7 @@ for ( let index = 0; index < selectGoalArray.length; index++ ) {
   const option = `option${index}`;
   selectGoalObject[option] = new Text({
     id: `${option}`,
-    className: "selectGoal options",
+    className: "options selectGoal",
     innerHtml: `${selectGoalArray[index]}`
   });
 }
