@@ -5,12 +5,12 @@ import profiling from "./components/complex/profiling.js";
 const app = document.querySelector( "#app" );
 app.innerHTML = register.content;
 
-const deactivator = {};
+const Deactivator = {};
 
-const Store = {
+const Activator = {
   activate: ( id, event = "click" ) => {
     const activateFunction = () => {
-      Store.dispatch(id);
+      Activator.dispatch(id);
     };
     document.querySelector( `#${ id }` ).addEventListener( event, activateFunction );
     const deactivate = () => {
@@ -20,7 +20,7 @@ const Store = {
   },
   activateClass: ( className, event = "click" ) => {
     const activateClassFunction = () => {
-      Store.dispatch(className);
+      Activator.dispatch(className);
     };
     document.querySelectorAll( `.${ className }` ).forEach( element => {
       element.addEventListener(event, activateClassFunction);
@@ -36,22 +36,22 @@ const Store = {
     switch (action) {
       case "facebook":
         app.innerHTML = main.content;
-        Store.activate("logout");
-        Store.activate("find");
+        Activator.activate("logout");
+        Activator.activate("find");
         break;
       case "logout":
         app.innerHTML = register.content;
-        Store.activate("facebook");
+        Activator.activate("facebook");
         break;
       case "find": {
         app.innerHTML = profiling.content;
-        deactivator.selectGoal = Store.activateClass( "selectGoal" );
+        Deactivator.selectGoal = Activator.activateClass( "selectGoal" );
         document.querySelector( "#page1" ).style.backgroundColor = "grey";
         break;
       }
       case "selectGoal": {
         // console.dir(deactivator.selectGoal);
-        deactivator.selectGoal();
+        Deactivator.selectGoal();
         console.dir( "selectGoal" );
 
         document.querySelector( "#subjectHeading" ).innerHTML = "Your fintess level";
@@ -91,12 +91,12 @@ const Store = {
         document.querySelector("#page1").style.backgroundColor = "white";
         document.querySelector( "#page2" ).style.backgroundColor = "grey";
 
-        deactivator.fitnessLevel = Store.activateClass( "selectFitnessLevel" );
+        Deactivator.fitnessLevel = Activator.activateClass( "selectFitnessLevel" );
 
         break;
       }
       case "selectFitnessLevel": {
-        deactivator.fitnessLevel();
+        Deactivator.fitnessLevel();
         console.dir("selectFitnessLevel");
 
         document.querySelector( "#subjectHeading" ).innerHTML = "How do you like to rain";
@@ -134,12 +134,12 @@ const Store = {
         document.querySelector("#page2").style.backgroundColor = "white";
         document.querySelector( "#page3" ).style.backgroundColor = "grey";
 
-        deactivator.selectHow = Store.activateClass("selectHow");
+        Deactivator.selectHow = Activator.activateClass("selectHow");
 
         break;
       }
       case "selectHow": {
-        deactivator.selectHow();
+        Deactivator.selectHow();
         console.dir( "selectHow" );
         const updateProfiling = ( className, heading, explanation, optionsArray  ) => {
 
@@ -153,16 +153,16 @@ const Store = {
   }
 };
 
-Store.activate( "facebook" );
+Activator.activate( "facebook" );
 
 /**
  * TODO
  *
- * Lower angle blue
+ * Pull out functions into separate file and maybe actions
+ *
+ * Lower angle blue: Pull out colors and angle into a separate file
  *
  * Back button profiling
- *
- * Fixed hight paragraph
  *
  * root
  * button layout text
@@ -176,5 +176,5 @@ Store.activate( "facebook" );
  *
  * Optimize SVG's
  *
- * Minify and unglify code
+ * Minify, unglify, tree shake
  */
