@@ -70,6 +70,11 @@ for (let index = 1; index <= 5; index++) {
     innerHtml: `${index}`
   } );
 
+  let background = "white";
+  if (index === 1) {
+    background = "grey";
+  }
+
   const page = new Layout( {
     className: "pages",
     id: `page${index}`,
@@ -79,7 +84,8 @@ for (let index = 1; index <= 5; index++) {
     width: "2em",
     height: "2em",
     border: "0.1em solid grey",
-    borderRadius: "50%"
+    borderRadius: "50%",
+    background: background
   } );
 
   const line = new Root( {

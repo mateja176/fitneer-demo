@@ -1,6 +1,7 @@
 import register from "./components/complex/register.js";
 import main from "./components/complex/main.js";
 import profiling from "./components/complex/profiling.js";
+import updateProfiling from "./reducers/updateProfiling.js";
 
 const app = document.querySelector( "#app" );
 app.innerHTML = register.content;
@@ -43,110 +44,75 @@ const Activator = {
         app.innerHTML = register.content;
         Activator.activate("facebook");
         break;
-      case "find": {
+      case "find":
         app.innerHTML = profiling.content;
         Deactivator.selectGoal = Activator.activateClass( "selectGoal" );
-        document.querySelector( "#page1" ).style.backgroundColor = "grey";
         break;
-      }
-      case "selectGoal": {
-        // console.dir(deactivator.selectGoal);
+
+      case "selectGoal":
+
         Deactivator.selectGoal();
-        console.dir( "selectGoal" );
 
-        document.querySelector( "#subjectHeading" ).innerHTML = "Your fintess level";
-        document.querySelector( "#subjectExplained" ).innerHTML = "It's not important where you begin<br>But where you are heading";
+        updateProfiling(
+          "selectFitnessLevel",
+          "Your fintess level",
+          "It's not important where you begin<br>But where you are heading",
+          [ "I'm not so fit", "I am quite fit", "I am very fit" ],
+          1
+        );
 
-        const fitnessLevelArray = [
-          "I'm not so fit",
-          "I am quite fit",
-          "I am very fit"
-        ];
-        const diff = fitnessLevelArray.length - document.querySelectorAll( ".options" ).length;
-        const difference = Math.abs(diff);
-
-        if ( fitnessLevelArray.length > document.querySelectorAll( ".options" ).length ) {
-          for (let index = 0; index < difference; index++) {
-            const additionalParagraph = document.createElement( "p" );
-            additionalParagraph.classList = "options";
-            document.querySelector( "#options" ).appendChild( additionalParagraph );
-          }
-        } else if ( fitnessLevelArray.length < document.querySelectorAll( ".options" ).length ) {
-          for ( let index = 1; index <= difference; index++ ) {
-            const options = document.querySelectorAll( ".options" );
-            const redundantParagraph = document.querySelector( `#option${options.length - index}` );
-            document.querySelector( "#options" ).removeChild(redundantParagraph);
-          }
-
-        }
-        document.querySelectorAll( ".options" ).forEach( option => {
-          option.classList = "options selectFitnessLevel";
-        } );
-
-        // document.querySelector( "#option0" ).innerHTML = "I'm not so fit";
-        document.querySelectorAll( ".options" ).forEach( ( option, i ) => {
-          option.innerHTML = `${fitnessLevelArray[i]}`;
-        });
-
-        document.querySelector("#page1").style.backgroundColor = "white";
-        document.querySelector( "#page2" ).style.backgroundColor = "grey";
-
-        Deactivator.fitnessLevel = Activator.activateClass( "selectFitnessLevel" );
+        Deactivator.selectFitnessLevel = Activator.activateClass("selectFitnessLevel");
 
         break;
-      }
-      case "selectFitnessLevel": {
-        Deactivator.fitnessLevel();
-        console.dir("selectFitnessLevel");
 
-        document.querySelector( "#subjectHeading" ).innerHTML = "How do you like to rain";
-        document.querySelector( "#subjectExplained" ).innerHTML = "Every method has it's benefits";
+      case "selectFitnessLevel":
 
-        const howArray = [
-          "Outside",
-          "In the gym"
-        ];
-        const diff = howArray.length - document.querySelectorAll( ".options" ).length;
-        const difference = Math.abs(diff);
+        Deactivator.selectFitnessLevel();
 
-        if ( howArray.length > document.querySelectorAll( ".options" ).length ) {
-          for (let index = 0; index < difference; index++) {
-            const additionalParagraph = document.createElement( "p" );
-            additionalParagraph.classList = "options";
-            document.querySelector( "#options" ).appendChild( additionalParagraph );
-          }
-        } else if ( howArray.length < document.querySelectorAll( ".options" ).length ) {
-          for ( let index = 1; index <= difference; index++ ) {
-            const options = document.querySelectorAll( ".options" );
-            const redundantParagraph = document.querySelector( `#option${options.length - index}` );
-            document.querySelector( "#options" ).removeChild(redundantParagraph);
-          }
-
-        }
-        document.querySelectorAll( ".options" ).forEach( option => {
-          option.classList = "options selectHow";
-        } );
-
-        document.querySelectorAll( ".options" ).forEach( ( option, i ) => {
-          option.innerHTML = `${howArray[i]}`;
-        });
-
-        document.querySelector("#page2").style.backgroundColor = "white";
-        document.querySelector( "#page3" ).style.backgroundColor = "grey";
+        updateProfiling(
+          "selectHow",
+          "How do you like to rain",
+          "Every method has it's benefits",
+          [ "Outside", "In the gym" ],
+          2
+        );
 
         Deactivator.selectHow = Activator.activateClass("selectHow");
 
         break;
-      }
-      case "selectHow": {
-        Deactivator.selectHow();
-        console.dir( "selectHow" );
-        const updateProfiling = ( className, heading, explanation, optionsArray  ) => {
 
-        };
+      case "selectHow":
+
+        Deactivator.selectHow();
+
+        updateProfiling(
+          "selectWhen",
+          "When do you like to train",
+          "Which time suits you best?",
+          [ "Morning", "Afternoon", "Evening" ],
+          3
+        );
+
+        Deactivator.selectWhen = Activator.activateClass("selectWhen");
 
         break;
-      }
+
+      case "selectWhen":
+
+        Deactivator.selectWhen();
+
+        updateProfiling(
+          "selectLocation",
+          "Location",
+          "Last step! To get a list of peers, turn on location.",
+          [ "Turn on location" ],
+          4
+        );
+
+        Deactivator.selectLocation = Activator.activateClass("selectLocation");
+
+        break;
+
       default:
         break;
     }
@@ -158,17 +124,21 @@ Activator.activate( "facebook" );
 /**
  * TODO
  *
- * Pull out functions into separate file and maybe actions
+ * Lazy load reducers and componenets for pages
+ *
+ * Pull out actions into separate file
  *
  * Lower angle blue: Pull out colors and angle into a separate file
  *
  * Back button profiling
  *
+ * Call the Activator (Root)Reducer Store values as arrays and
+ * create functions which have back and forward
+ * You can even store values in an object if you want to be able to call a state by key
+ *
  * root
  * button layout text
  * heading paragraph anchor label
- *
- * Lazy Load main.js
  *
  * Create dynamic componenets
  *
